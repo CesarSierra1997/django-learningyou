@@ -25,7 +25,7 @@ def signin(request):
         else:
             login(request, user)
             return redirect('index')
-@login_required     
+    
 def signup(request): #Registro de user
     if request.method == 'GET':
         return render(request, 'usuarios/admin/signup.html', {
@@ -49,7 +49,7 @@ def signup(request): #Registro de user
             'error': 'Password do not match'
         })
     
-
+@login_required 
 def registro(request): #Registro de user
     if request.method == 'GET':
         return render(request, 'usuarios/admin/registro.html', {
