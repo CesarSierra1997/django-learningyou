@@ -1,0 +1,67 @@
+{% extends 'layouts/learningyou.html' %}
+
+{% block content %}
+<main class="container py-5 col-md-6">
+    {% if user.is_authenticated %}
+    <h3>Admin {{user.username}}</h3>
+    {% endif %}
+    <section class="card card-body">
+        <div class="container-md ">
+            <h4 class="text-center">Registro de usuarios</h4>
+            {% if "/registro/admin/" in request.path %}
+            <div class="card card-body mt-3 set-md container-md">
+                <strong>
+                    <p>Registrar administrador </p>
+                </strong>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ register_admin.as_p }}
+                    <div class="mi-boton">
+                        <button type="submit">Registrar</button>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            {% elif "/registro/docente/" in request.path %}
+            <div class="card card-body mt-3">
+                <strong>
+                    <p>Registrar docente </p>
+                </strong>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ register_doc.as_p }}
+                    <div class="mi-boton">
+                        <button type="submit">Registrar</button>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            {% elif "/registro/estudiante/" in request.path %}
+            <div class="card card-body mt-3">
+                <strong>
+                    <p>Registrar estudiante </p>
+                </strong>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ register_es.as_p }}
+                    <div class="mi-boton">
+                        <button type="submit">Registrar</button>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            {% else %}
+            <p>URL no reconocida</p>
+            {% endif %}
+        </div>
+
+
+        <!-- {% if user.is_authenticated %}
+
+        {% else %}
+       
+        {% endif %} -->
+    </section>
+</main>
+
+{% endblock %}

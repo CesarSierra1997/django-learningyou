@@ -1,0 +1,38 @@
+{% extends 'layouts/learningyou.html' %}
+
+{% csrf_token %}
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center display-3 py-5">Cohortes</h1>
+            <h4 style="color: chartreuse;">{{msg}} {{title}}</h4>
+            <ul class="list-group">
+                <form action="GET">
+                    {{form}}
+                </form>
+                {% for tsk in form %}
+                <a  id="tareas" class="list-group-item">
+                    <header class="d-flex justify-content-between" >
+                        <li style="list-style:none">                                                              
+                            <h4>{{tsk.nombre}}</h4> 
+                            <p>{{tsk.codigo}}</p>
+                            <p>{{tsk.descripcion}}</p>
+                            <p>{{tsk.codigo}}</p>
+                            <p>{{tsk.datecompleted|date:'M j Y:i'}}</p>
+                        </li>
+                        <li>
+                            <p>{{tsk.user.username}}</p>
+                        </li>
+                    </header>
+                    
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

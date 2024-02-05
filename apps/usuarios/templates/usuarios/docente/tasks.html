@@ -1,0 +1,46 @@
+{% extends 'layouts/learningyou.html' %}
+
+{% csrf_token %}
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+
+            <h1>Tareas pendientes</h1>
+            <h4 style="color: chartreuse;">{{msg}} {{title}}</h4>
+            <ul class="list-group">
+                {% for tsk in tasks %}
+                <a href="{% url 'tasks_detail' tsk.id %}" id="tareas" class="list-group-item">
+                    <header class="d-flex justify-content-between">
+                        <li style="list-style:none">
+                            {% if tsk.important %}
+                            <h4>{{tsk.title}}</h4>
+                            <p>{{tsk.description}}</p>
+                            <p>¡Importante!</p>
+                            {% else %}
+                            <h4>{{tsk.title}}</h4>
+                            <p>{{tsk.description}}</p>
+                            {% endif %}
+                            <hr>
+
+                            <p>{{tsk.leccion_id.cohorte_id}} - {{tsk.leccion_id}}</p>
+
+
+
+                        </li>
+                        <li>
+                            <p>{{tsk.user.username}}</p>
+                            <p>{{tsk.created|date:'M j Y'}}</p>
+                        </li>
+                    </header>
+
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'layouts/learningyou.html' %}
+
+{% csrf_token %}
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+            <h1>Tareas finalizadas</h1>
+            <h4 style="color: chartreuse;">{{msg}} {{title}}</h4>
+            <ul class="list-group">
+                {% for tsk in tasks %}
+                <a href="{% url 'tasks_detail' tsk.id %}" class="list-group-item">
+                    <header class="d-flex justify-content-between">
+                        <li style="list-style:none">
+
+                            <h4 class="fw-blod text-success">{{tsk.title}}</h4>
+                            <p>{{tsk.description}}</p>
+                            <div class="cont">
+                                <p style="margin-bottom: -5px;">fecha de finalización <br>
+                                {{ tsk.datecompleted|date:'M j Y, H:i:s' }}</p>
+
+                            {% comment %}
+                            'M': Mes abreviado.
+                            'j': Día del mes sin ceros iniciales.
+                            'Y': Año con cuatro dígitos.
+                            'H': Hora en formato de 24 horas.
+                            'i': Minuto con ceros iniciales.
+                            's': Segundo con ceros iniciales.
+                            {% endcomment %}
+                        </li>
+                        <li> Fecha:                           
+                            <p>{{tsk.created|date:'M j Y'}}</p>
+                            <p>{{tsk.leccion_id.cohorte_id}}<br>
+                            {{tsk.leccion_id}}</p>
+                        </li>
+                    </header>
+
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

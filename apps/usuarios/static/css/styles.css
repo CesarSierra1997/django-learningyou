@@ -1,0 +1,84 @@
+/*learningyou*/
+.body {
+  background-image: url('C:/Users/cesar/OneDrive/Escritorio/Django/learningyou/apps/usuarios/static/img/welcome.gif');
+}
+
+#imagen {
+  display: block;
+  width: 100px;
+  padding: 2px 2px;
+  margin: -10px -10px;
+}
+
+#pug {
+  display: block;
+  width: 100px;
+  padding: 2px 2px;
+  margin: -30px -30px;
+}
+
+#menu :hover {
+  background-color: #9d0ff4;
+  border: 0.05rem solid black;
+  color: #ffff;
+  border-radius: 15px 0 15px 0;
+  box-shadow: 4px 3px 8px #000000;
+  background: inset 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+#menu :hover {
+  background-color: #b754f598;
+}
+
+/* index */
+.contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mi-boton a,
+.mi-boton button {
+  display: inline-block;
+  padding: 15px;
+  width: 150px;
+  height: 65px;
+  margin-right: 20px;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #9d0ff4;
+  color: white;
+  border-radius: 5px 0 5px 0;
+  background: inset 10px 10px 10px rgb(0, 0, 0.3);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+}
+
+.mi-boton :hover {
+  box-shadow: 4px 4px 10px #9d0ff4;
+  background-color: #c59fdd;
+  border-radius: 25px 0 25px 0;
+  color: #9d0ff4;
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+
+#botonLyou {
+  display: inline-block;
+  background-color: #9d0ff4;
+  color: #ffff;
+  margin: 10px;
+}
+
+.img {
+  width: 350px;
+}
+
+/* lista de tareas */
+a.list-group-item:hover {
+  background-color: #9d0ff4;
+  border: 0.05rem solid black;
+  color: #ffff;
+  border-radius: 40px 0 40px 0;
+}

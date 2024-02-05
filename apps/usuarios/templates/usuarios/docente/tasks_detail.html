@@ -1,0 +1,42 @@
+{% extends 'layouts/learningyou.html' %}
+
+{% block content %}
+<main class="container">
+        <div class="row">
+                <div class="col-md-6 offset-md-3 mt-5">
+                        <h1>Actualizar tarea</h1>
+                        <div class="card card-body">
+                                <div>
+                                        <form method="POST">
+                                                {{error}}
+                                                {% csrf_token %}
+                                                {{form.as_p}}
+                                                <button class="btn btn-primary">
+                                                        Actualizar tarea
+                                                </button>
+                                        </form>
+                                </div>
+                                <div class="mt-2 d-flex justify-content-between aling-self-center">
+                                        <form action="{% url 'complete_task' task.id%}" method="POST">
+                                                {% csrf_token %}
+                                                <button class="btn btn-secondary">
+                                                        Finalizar Tarea
+                                                </button>
+                                        </form>
+                                        <form action="{% url 'delete_task' task.id%}" method="POST">
+                                                {% csrf_token %}
+                                                <button class="btn btn-danger">
+                                                        Eliminar Tarea
+                                                </button>
+                                        </form>
+                                </div>
+
+
+                        </div>
+
+                </div>
+
+        </div>
+</main>
+
+{% endblock %}

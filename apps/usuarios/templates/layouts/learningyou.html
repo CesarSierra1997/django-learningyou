@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learningyou1.0</title>
+    <link type="text/css" href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="body">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container"
+            style=" font-family:Georgia, 'Times New Roman', Times, serif; font-size: 20px; margin: 0 auto;"">
+            <a href=" /">
+            <div class="contenedor-imagen">
+                <img id="imagen" class="img-fluid" src="{% static 'img/logo.png' %}" alt="png">
+            </div>
+            </a>
+            <a class="navbar-brand" style=" font-family:Georgia, 'Times New Roman', Times, serif; font-size: 25px;"
+                href="/">Learning you</a>
+            {% if user.is_authenticated %}
+            <img id="pug" class="img-fluid" src="{% static 'img/logIn.gif' %}" alt="gif">
+
+            {% endif %}
+
+            <ul id="menu" class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown" onmouseenter="showDropdown(this)" onmouseleave="hideDropdown(this)">
+                    <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Registro Usuarios
+                    </a>
+                    <ul class="dropdown-menu" id="registroUsuariosDropdown">
+                        <li><a class="dropdown-item" href="{% url 'registro_docente' %}">Registro Docente</a></li>
+                        <li><a class="dropdown-item" href="{% url 'registro_estudiante' %}">Registro Estudiante</a></li>
+                        <hr class="dropdown-divider">
+                        <li><a class="dropdown-item" href="{% url 'registro_admin' %} ">Registro Admin</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" onmouseenter="showDropdown(this)" onmouseleave="hideDropdown(this)">
+                    <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Cohortes
+                    </a>
+                    <ul class="dropdown-menu" id="registroCohortesDropdown">
+                        <li><a class="dropdown-item" href="{% url 'cohortes' %}">Ver Cohortes</a></li>
+                        <li><a class="dropdown-item" href="{% url 'index' %}">Actualizar Cohorte</a></li>
+                        <li><a class="dropdown-item" href="{% url 'index' %}">Eliminar Cohorte</a></li>
+                        <hr class="dropdown-divider">
+                        <li><a class="dropdown-item" href="{% url 'registro_cohorte' %} ">Registrar Cohorte</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" onmouseenter="showDropdown(this)" onmouseleave="hideDropdown(this)">
+                    <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Lecciones
+                    </a>
+                    <ul class="dropdown-menu" id="registroLeccionesDropdown">
+                        <li><a class="dropdown-item" href="{% url 'index' %}">Ver Lecciones</a></li>
+                        <li><a class="dropdown-item" href="{% url 'index' %}">Actualizar Leccion</a></li>
+                        <li><a class="dropdown-item" href="{% url 'index' %}">Eliminar Leccion</a></li>
+                        <hr class="dropdown-divider">
+                        <li><a class="dropdown-item" href="{% url 'registro_leccion' %} ">Registrar Leccion</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" onmouseenter="showDropdown(this)" onmouseleave="hideDropdown(this)">
+                    <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Tareas
+                    </a>
+                    <ul class="dropdown-menu" id="registroTareasDropdown">
+                        <li><a class="dropdown-item" href="{% url 'tasks' %}">Ver Tareas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'tasks_completed' %}">Tareas Finalizadas</a></li>
+                        <hr class="dropdown-divider">
+                        <li><a class="dropdown-item" href="{% url 'create_task' %}">Crear Tarea</a></li>
+                    </ul>
+                </li>
+                <script>
+                    function showDropdown(element) {
+                        var dropdown = element.querySelector('.dropdown-menu');
+                        dropdown.classList.add('show');
+                    }
+
+                    function hideDropdown(element) {
+                        var dropdown = element.querySelector('.dropdown-menu');
+                        dropdown.classList.remove('show');
+                    }
+                </script>
+
+                <script>
+                    function showDropdown(element) {
+                        var dropdown = element.querySelector('.dropdown-menu');
+                        dropdown.classList.add('show');
+                    }
+
+                    function hideDropdown(element) {
+                        var dropdown = element.querySelector('.dropdown-menu');
+                        dropdown.classList.remove('show');
+                    }
+                </script>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin">Sign In</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{% extends 'layouts/learningyou.html' %}
+
+{% block content %}
+<main class="container py-5">
+    {% if user.is_authenticated == True%}
+    <h3>Welcome {{user.username}}</h3>
+    <section class="card card-body">
+        <h1>Bienvenidos a Learning you</h1>
+        <p>Una plataforma de cursos en linea adaptada a tus necesidades, ¿estas listo?</p>
+        <div class="contenedor">
+            <img class="img" style="width: 500px;" src="..\static\img\welcome.gif" alt="png">
+        </div>
+        <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate fugit possimus quis delectus omnis
+            recusandae eius laborum aliquam dicta? Enim vel eius vitae ratione nostrum, eum totam doloremque a! Amet!
+        </h5>
+    </section>
+    {% else %}
+    <section class="card card-body">
+        <h1>Bienvenidos a Learning you</h1>
+        <p>Una plataforma de cursos en linea adaptada a tus necesidades, ¿estas listo?</p>
+    </section>
+    <div class="contenedor">
+        <div>
+            <img class="img" src="..\static\img\logo.png" alt="png">
+        </div>
+        <div class="mi-boton">
+            <a href="/signin">Sign In</a>
+        </div>
+        <div class="mi-boton">
+            <a href="registro/signup/">Sign Up</a>
+        </div>
+
+    </div>
+    {% endif %}
+
+
+</main>
+
+{% endblock %}
